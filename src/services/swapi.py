@@ -1,4 +1,22 @@
+from strenum import StrEnum
+
 import requests
+
+
+class SortBy(StrEnum):
+    NAME = "name"
+    MODEL = "model"
+    MANUFACTURER = "manufacturer"
+    COST_IN_CREDITS = "cost_in_credits"
+    LENGTH = "length"
+    MAX_ATMOSPHERING_SPEED = "max_atmosphering_speed"
+    CREW = "crew"
+    PASSENGERS = "passengers"
+    CARGO_CAPACITY = "cargo_capacity"
+    CONSUMABLES = "consumables"
+    HYPERDRIVE_RATING = "hyperdrive_rating"
+    MGLT = "MGLT"
+    STARSHIP_CLASS = "starship_class"
 
 
 class SwApi:
@@ -7,7 +25,7 @@ class SwApi:
         pass
 
     @staticmethod
-    def get_starships(asc: bool = False, sort_by: str = "name"):
+    def get_starships(asc: bool = False, sort_by: SortBy = SortBy.NAME):
         url = "https://swapi.dev/api/starships"
         our_starships = []
 

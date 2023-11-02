@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from .services.swapi import SwApi
+from .services.swapi import SwApi, SortBy
 
 app = FastAPI(
     title="StarWarsAPI",
@@ -19,7 +19,7 @@ async def say_hello(name: str):
 
 
 @app.get("/starships")
-async def get_starships(asc: bool = False, sort_by: str = "name"):
+async def get_starships(asc: bool = False, sort_by: SortBy = SortBy.NAME):
     api = SwApi()
     return api.get_starships(asc, sort_by)
 
